@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: payments-reconciliation
+    env: python
+    plan: free
+    buildCommand: pip install -e ".[dev]"
+    startCommand: streamlit run app.py --server.port $PORT --server.address 0.0.0.0

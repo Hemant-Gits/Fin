@@ -1,0 +1,23 @@
+Build a small end-to-end reconciliation project for a payments company whose month-end books don’t balance.
+
+Requirements:
+- Generate your own deterministic synthetic test data (no input files).
+- Create two datasets:
+  1) internal_transactions: platform records instantly at capture time
+  2) bank_settlements: bank batches/settles 1–2 days later
+- At month close (pick a month like 2026-05), reconcile internal captures in that month vs bank settlements in that month.
+- Plant and detect these gap types:
+  1) A transaction captured at month end that settles the following month
+  2) A rounding difference that only shows when summed (per-transaction diffs should be within tolerance)
+  3) A duplicate entry in one dataset
+  4) A refund with no matching original transaction
+- State assumptions clearly.
+- Provide:
+  - a CLI that generates data and writes a reconciliation report + summary
+  - unit tests verifying each planted gap is detected
+  - a short note (3 sentences) about what the solution would get wrong in production
+
+Implementation notes:
+- Prefer Python with pandas/numpy.
+- Output CSVs and a JSON summary.
+- Make the code easy to run locally (venv + pytest).
